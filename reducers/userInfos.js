@@ -15,8 +15,12 @@ const initialState = {
         console.log("action payload", action.payload)
         state.value.username = action.payload;
       },
+      resetUsername : (state, action) => {
+        console.log("reset")
+        state.value.username = "";
+      }
     },
    });
 
-   export const { addUsername} = usersSlice.actions;
+   export const {addUsername, resetUsername} = usersSlice.actions;
 export default usersSlice.reducer;

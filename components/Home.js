@@ -3,23 +3,41 @@ import Pusher from "pusher-js";
 import { useEffect, useState } from "react";
 import ChatRoom from "./ChatRoom";
 import UserNameModal from "./userNameModal";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { resetUsername } from "../reducers/userInfos";
+const PUSHER_KEY = process.env.REACT_APP_PUSHER_KEY;
+const PUSHER_CLUSTER = process.env.REACT_APP_PUSHER_CLUSTER;
 
 function Home() {
-  const [chats, setChats] = useState([])
-  const [isVisble,  setIsVisible] = useState(true)
-  const userName = useSelector((state) => state.userInfos.value.username)
+  const dispatch = useDispatch();
+  const [chats, setChats] = useState([]);
+  const [message, setMessage] = useState("");
+  const [isVisble, setIsVisible] = useState(true);
+  const userName = useSelector((state) => state.userInfos.value.username);
 
-  console.log("USERNAME", userName)
+  console.log("USERNAME", userName);
 
   useEffect(() => {
-    const PUSHER_KEY = process.env.REACT_APP_PUSHER_KEY;
-    const PUSHER_CLUSTER = process.env.REACT_APP_PUSHER_CLUSTER;
-    
     const pusher = new Pusher(PUSHER_KEY, {
       cluster: PUSHER_CLUSTER,
       forceTLS: true,
     });
+
+    fetch("http://localhost:3000/messages", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }).then(res => res.json()).then((data) => {
+      if(data.result){
+        setChats(
+          data.messages.sort((first, sec) => {
+            return new Date(sec.date) + new Date(first.date);
+          })
+        );
+      }
+    })
 
     const channel = pusher.subscribe("chat");
     channel.bind("message", (newMessage) => {
@@ -32,21 +50,25 @@ function Home() {
   }, []);
 
   useEffect(() => {
-  
-    if(userName){
-      setIsVisible(false)
+    if (userName) {
+      setIsVisible(false);
     }
-  }, [userName])
+  }, [userName]);
 
-  console.log("Visible", isVisble)
+  console.log("Visible", isVisble);
 
   return (
-    
-      <main className={styles.main}>
-        {!userName && <UserNameModal/>}
-        <ChatRoom chats = {chats}/>
-      </main>
-
+    <main className={styles.main}>
+      <div className={styles.iconContainer}>
+        <FontAwesomeIcon
+          icon={faArrowRightFromBracket}
+          size="2x"
+          onClick={() => dispatch(resetUsername())}
+        />
+      </div>
+      {!userName && <UserNameModal />}
+      <ChatRoom chats={chats} />
+    </main>
   );
 }
 
