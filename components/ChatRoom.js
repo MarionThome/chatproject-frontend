@@ -6,19 +6,19 @@ export default function ChatRoom(props) {
   const messages = props.messages
   const chats = props.chats
 
+
   const [messageInput, setMessageInput] = useState("");
 
-  function handleMessageInputChange(event) {
+  const handleMessageInputChange = (event) => {
     setMessageInput(event.target.value);
-    console.log(messageInput)
+    
   }
-  function handleKeyPress(event) {
+  const handleKeyPress = (event) => {
     if (event.key === "Enter" || event.keyCode === 13) {
       event.preventDefault();
       const payload = {
         message: messageInput,
       };
-      console.log(payload)
       axios.post("http://localhost:3000/message", payload);
       setMessageInput("");
     }

@@ -1,0 +1,33 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.modalWrapper {
+    background-color: white;
+    width: 50%;
+    max-height: 60%;
+    overflow: scroll;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userNameInput{
+    height: 40px;
+    text-align: center;
+    width: 50%;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}

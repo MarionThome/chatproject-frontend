@@ -2,11 +2,15 @@ import styles from "../styles/Home.module.css";
 import Pusher from "pusher-js";
 import { useEffect, useState } from "react";
 import ChatRoom from "./ChatRoom";
+import UserNameModal from "./userNameModal";
+import { useSelector } from 'react-redux';
 
 function Home() {
-  const [messages, setMessages] = useState();
   const [chats, setChats] = useState([])
+  const [isVisble,  setIsVisible] = useState(true)
+  const userName = useSelector((state) => state.userInfos.value.username)
 
+  console.log("USERNAME", userName)
 
   useEffect(() => {
     const PUSHER_KEY = process.env.REACT_APP_PUSHER_KEY;
@@ -17,25 +21,32 @@ function Home() {
       forceTLS: true,
     });
 
-    console.log(messages);
     const channel = pusher.subscribe("chat");
     channel.bind("message", (newMessage) => {
-      setMessages(newMessage);
+      setChats((prev) => [...prev, newMessage]);
     });
+
+    return () => {
+      pusher.unsubscribe("chat");
+    };
   }, []);
 
   useEffect(() => {
-    if(messages){
-      setChats([...chats, messages])
+  
+    if(userName){
+      setIsVisible(false)
     }
-  }, [messages])
+  }, [userName])
+
+  console.log("Visible", isVisble)
 
   return (
-    <div>
+    
       <main className={styles.main}>
-        <ChatRoom messages={messages} chats = {chats} />
+        {!userName && <UserNameModal/>}
+        <ChatRoom chats = {chats}/>
       </main>
-    </div>
+
   );
 }
 
