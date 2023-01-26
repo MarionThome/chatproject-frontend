@@ -23,7 +23,8 @@ export default function UserNameModal(props) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalWrapper}>
-        <h1>Please enter your UserName</h1>
+        <h1 className={styles.title}>Welcome</h1>
+        <h2 className={styles.title2}>Please enter a username and press enter to start chatting</h2>
         <input
           placeholder="username"
           type="text"

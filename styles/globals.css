@@ -32,3 +32,7 @@ background: linear-gradient(47deg, rgba(199,230,232,1) 6%, rgba(136,213,215,1) 3
   background-color: #a8bbbf;
 }
 
+::placeholder { 
+  color: #a8bbbf;
+  opacity: 1; 
+}

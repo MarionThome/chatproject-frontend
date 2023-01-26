@@ -69,7 +69,7 @@ export default function ChatRoom(props) {
 
   return (
     <div className={styles.chatRoomWrapper}>
-      <div className={styles.chatsContainer}>
+      <div className={styles.chatsContainer} id="scroll">
         <div className={styles.chatRoomMessages}>{messageList}</div>
       </div>
       <div className={styles.chatRoomMessageInputWrapper}>
