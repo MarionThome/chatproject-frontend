@@ -8,7 +8,7 @@
 .chatsContainer{
     width: 100%;
     height: 80Vh;
-    overflow: scroll;
+    overflow-y: scroll;
     display: flex;
 flex-direction: column-reverse;
 }
