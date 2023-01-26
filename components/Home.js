@@ -18,8 +18,6 @@ function Home() {
   const [isVisble, setIsVisible] = useState(true);
   const userName = useSelector((state) => state.userInfos.value.username);
 
-  console.log("USERNAME", userName);
-
   useEffect(() => {
     const pusher = new Pusher(PUSHER_KEY, {
       cluster: PUSHER_CLUSTER,
@@ -54,8 +52,6 @@ function Home() {
       setIsVisible(false);
     }
   }, [userName]);
-
-  console.log("Visible", isVisble);
 
   return (
     <main className={styles.main}>

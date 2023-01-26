@@ -12,11 +12,9 @@ const initialState = {
     initialState,
     reducers: {
       addUsername: (state, action) => {
-        console.log("action payload", action.payload)
         state.value.username = action.payload;
       },
       resetUsername : (state, action) => {
-        console.log("reset")
         state.value.username = "";
       }
     },
