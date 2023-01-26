@@ -5,11 +5,23 @@ const nextConfig = {
     domains: [],
   },
   env: {
-    REACT_APP_PUSHER_APP_ID: "1542831",
     REACT_APP_PUSHER_KEY: "e9f0119292b8f4083393",
-    REACT_APP_PUSHER_SECRET: "8a0e0b8a99140f045c63",
     REACT_APP_PUSHER_CLUSTER: "eu",
   },
+  async headers() {
+    return [
+      {
+        // matching all API routes
+        source: "/api/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+        ]
+      }
+    ]
+  }
 };
 
 module.exports = nextConfig;
