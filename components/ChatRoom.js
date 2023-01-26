@@ -35,24 +35,32 @@ export default function ChatRoom(props) {
           className={styles.chatMessage}
           style={{ alignItems: "flex-end" }}
         >
-          <p>{message.author}</p>
-          <div>
-            <p className={styles.chatMessageBody}>{message.message}</p>
-          </div>
-          <div>
-            <p>{moment(message.date).calendar()}</p>
-          </div>
+          <p className= {styles.messageAuthor}>{message.author}</p>
+
+          <p
+            className={styles.chatMessageBody}
+            style={{ backgroundColor: "#77c7c5" }}
+          >
+            {message.message}
+          </p>
+
+          <p className= {styles.messageDate}>{moment(message.date).calendar()}</p>
         </div>
       );
     } else {
       return (
         <div key={index} className={styles.chatMessage}>
-          <p>{message.author}</p>
+          <p className= {styles.messageAuthor}>{message.author}</p>
           <div>
-            <p className={styles.chatMessageBody}>{message.message}</p>
+            <p
+              className={styles.chatMessageBody}
+              style={{ backgroundColor: "#a9b5b7" }}
+            >
+              {message.message}
+            </p>
           </div>
           <div>
-            <p>{moment(message.date).calendar()}</p>
+            <p className= {styles.messageDate}>{moment(message.date).calendar()}</p>
           </div>
         </div>
       );

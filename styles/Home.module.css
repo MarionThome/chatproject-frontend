@@ -1,15 +1,24 @@
 .main {
 
-  min-height: 100vh;
-
+  height: 100vh;
+  width : 50%; 
+  margin: auto;
+  vertical-align: middle;
+  
 }
-
 .iconContainer{
   display: flex;
-  height: 5vh;
   width: 100%;
   justify-content: flex-end;
   cursor: pointer;
   align-items: center;
   padding: 20px 20px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    min-height: 100vh;
+    width : 100%; 
+    margin: none;
+  }
 }

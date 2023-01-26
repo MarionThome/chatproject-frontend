@@ -59,15 +59,18 @@ function Home() {
 
   return (
     <main className={styles.main}>
+      <div className={styles.content}>
       <div className={styles.iconContainer}>
         <FontAwesomeIcon
           icon={faArrowRightFromBracket}
           size="2x"
+          color="#ddf3f0"
           onClick={() => dispatch(resetUsername())}
         />
       </div>
       {!userName && <UserNameModal />}
       <ChatRoom chats={chats} />
+      </div>
     </main>
   );
 }
