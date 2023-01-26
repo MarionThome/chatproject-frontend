@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 import Pusher from "pusher-js";
 import { useEffect, useState } from "react";
 import ChatRoom from "./ChatRoom";
-import UserNameModal from "./userNameModal";
+import UserNameModal from "./UserNameModal";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
