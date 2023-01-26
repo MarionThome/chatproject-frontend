@@ -22,7 +22,7 @@ export default function ChatRoom(props) {
         message: messageInput,
         date: date,
       };
-      axios.post("http://localhost:3000/message", payload);
+      axios.post("https://chatapp-backend-bay.vercel.app/message", payload);
       setMessageInput("");
     }
   };

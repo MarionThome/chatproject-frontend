@@ -24,7 +24,7 @@ function Home() {
       forceTLS: true,
     });
 
-    fetch("http://localhost:3000/messages", {
+    fetch("https://chatapp-backend-bay.vercel.app/messages", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then(res => res.json()).then((data) => {
