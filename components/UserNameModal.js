@@ -15,7 +15,7 @@ export default function UserNameModal(props) {
 
   const handleKeyPress = (event) => {
     if ((event.key === "Enter" || event.keyCode === 13) && userNameInput) {
-      fetch("https://chatapp-backend-bay.vercel.app/users/new", {
+      fetch("https://chatapp-backend-h3t2.onrender.com/users/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: userNameInput }),
@@ -25,7 +25,7 @@ export default function UserNameModal(props) {
           dispatch(addUsername(userNameInput));
           setUserNameInput("");
           if (data.result) {
-            axios.post("https://chatapp-backend-bay.vercel.app/message", {
+            axios.post("https://chatapp-backend-h3t2.onrender.com/message", {
               author: "Marion",
               message: `Welcome ${userNameInput}, to start chatting, just write your message and press "enter" :)`,
               date: new Date(),

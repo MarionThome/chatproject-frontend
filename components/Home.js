@@ -24,7 +24,7 @@ function Home() {
       forceTLS: true,
     });
 
-    fetch("https://chatapp-backend-bay.vercel.app/messages", {
+    fetch("https://chatapp-backend-h3t2.onrender.com/messages", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }).then(res => res.json()).then((data) => {
