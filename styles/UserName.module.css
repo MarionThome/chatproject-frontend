@@ -48,3 +48,17 @@
     margin-bottom: 30px;
 }
 
+
+@media (max-width: 768px) {
+    .modalWrapper {
+        background-color: white;
+        width: 90%;
+        height: 90%;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
